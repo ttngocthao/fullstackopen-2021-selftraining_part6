@@ -1,7 +1,8 @@
-import {getId} from '../utilities/getId'
-import {getVote} from '../utilities/getVote'
+
 import {orderArr} from '../utilities/orderArr'
-import {initialState} from '../store'
+
+const initialState = []
+
 
 export const createNew =(newAnecdote)=>{
   return {
@@ -26,7 +27,7 @@ export const initAnecdotes =(anecdotes)=>{
   }
 }
 
-const anecdoteReducer = (state = initialState.anecdotes, action) => {
+const anecdoteReducer = (state = initialState, action) => {
   // console.log('state now: ', state)
   // console.log('action', action)
   let newState

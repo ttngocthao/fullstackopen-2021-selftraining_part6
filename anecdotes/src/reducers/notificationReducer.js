@@ -1,5 +1,9 @@
-import {initialState} from '../store'
-const notificationReducer =(state = initialState.notification,action )=>{
+const initialState = {
+      visible: false,
+      content:''
+      }
+
+const notificationReducer =(state = initialState,action )=>{
     switch(action.type){
         case 'SHOW_NOTIFICATION':
             return {

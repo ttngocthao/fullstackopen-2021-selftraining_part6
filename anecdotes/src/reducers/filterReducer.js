@@ -4,9 +4,13 @@
  *? 3. write dispatch functions
  */
 
-import {initialState} from '../store'
 
-const filterReducer =(state = initialState.filter,action)=>{
+const initialState = {
+    showAll: true,
+    filterInput:''
+  }
+
+const filterReducer =(state = initialState,action)=>{
     switch(action.type){
         case 'APPLY_FILTER':
             return {
