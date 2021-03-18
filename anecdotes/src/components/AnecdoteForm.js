@@ -1,7 +1,6 @@
 import React from 'react'
 import {useDispatch } from 'react-redux'
 import {createNew} from '../reducers/anecdoteReducer'
-import anecdotesService from '../services/anecdotes'
 
 const AnecdoteForm = () => {
     const dispatch = useDispatch()
@@ -9,9 +8,8 @@ const AnecdoteForm = () => {
     e.preventDefault()
     const content =e.target.content.value
     if(content){
-       
-      const newAnecdote = await anecdotesService.createNew(content)
-      dispatch(createNew(newAnecdote))
+     
+      dispatch(createNew(content))
       
     }else{
       alert('input cannot be empty')

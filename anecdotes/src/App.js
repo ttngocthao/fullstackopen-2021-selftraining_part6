@@ -7,16 +7,12 @@ import Filter from './components/Filter'
 import Notification from './components/Notification'
 import { initAnecdotes } from './reducers/anecdoteReducer'
 
-import anecdotesService from './services/anecdotes'
+
 
 const App = () => {
   const dispatch = useDispatch()
   useEffect(()=>{
-    (async()=>{
-    const anecdotes = await anecdotesService.getAll()
-    dispatch(initAnecdotes(anecdotes))
-    }
-   )()
+    dispatch(initAnecdotes())   
   } ,[dispatch])
   
 
