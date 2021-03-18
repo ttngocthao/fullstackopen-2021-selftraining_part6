@@ -20,21 +20,24 @@ const notificationReducer =(state = initialState,action )=>{
             return state
     }
 }
+
+let timeoutId
 export const setNotification =(msg,timeInSecond)=>{
    
-   
     return async dispatch =>{     
-        
+       
+        clearTimeout(timeoutId)
         await dispatch({
             type:'SHOW_NOTIFICATION',
             data: msg
         })
-        setTimeout(()=>{          
+       
+        timeoutId = setTimeout(()=>{          
            dispatch({
                type: 'HIDE_NOTIFICATION'
            })
         },timeInSecond*1000) 
-
+        
        
     }
    
