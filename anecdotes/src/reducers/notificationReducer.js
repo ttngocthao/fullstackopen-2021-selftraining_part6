@@ -8,7 +8,7 @@ const notificationReducer =(state = initialState,action )=>{
         case 'SHOW_NOTIFICATION':
             return {
                 visible:true,
-                content: `You voted ${action.data}`
+                content: action.data
                 }
         case 'HIDE_NOTIFICATION':
             return {
@@ -19,11 +19,20 @@ const notificationReducer =(state = initialState,action )=>{
             return state
     }
 }
-export const showNotification =(content)=>{
-    return {
-        type:'SHOW_NOTIFICATION',
-        data: content
+export const setNotification =(msg,timeInSecond)=>{
+    return async dispatch =>{
+       
+        await dispatch({
+            type:'SHOW_NOTIFICATION',
+            data: msg
+        })
+        setTimeout(()=>{          
+           dispatch({
+               type: 'HIDE_NOTIFICATION'
+           })
+        },timeInSecond*1000)
     }
+   
 }
 export const hideNotification=()=>{
     return {

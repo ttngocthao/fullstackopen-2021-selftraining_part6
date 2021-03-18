@@ -1,6 +1,7 @@
 import React from 'react'
 import {useDispatch } from 'react-redux'
 import {createNew} from '../reducers/anecdoteReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
 const AnecdoteForm = () => {
     const dispatch = useDispatch()
@@ -10,6 +11,8 @@ const AnecdoteForm = () => {
     if(content){
      
       dispatch(createNew(content))
+
+      dispatch(setNotification('New anecdote is added',10))
       
     }else{
       alert('input cannot be empty')
