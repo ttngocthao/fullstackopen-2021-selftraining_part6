@@ -3,14 +3,10 @@ import {getVote} from '../utilities/getVote'
 import {orderArr} from '../utilities/orderArr'
 import {initialState} from '../store'
 
-export const createNew =(content)=>{
+export const createNew =(newAnecdote)=>{
   return {
     type:'ADD_ANECDOTES',
-    data: {
-      id: getId(),
-      content: content,
-      votes: getVote()
-  }
+    data: newAnecdote
   }
 }
 
@@ -23,11 +19,21 @@ export const addVote = (id)=>{
   }
 }
 
+export const initAnecdotes =(anecdotes)=>{
+  return {
+    type: 'INIT_ANECDOTES',
+    data: anecdotes
+  }
+}
+
 const anecdoteReducer = (state = initialState.anecdotes, action) => {
   // console.log('state now: ', state)
   // console.log('action', action)
   let newState
   switch(action.type){
+    case 'INIT_ANECDOTES':
+      newState= action.data
+      return orderArr(newState,'votes')
     case 'VOTE':
       newState = state.map(i=> i.id === action.data.id ? {...i,votes: i.votes+1} :i)
       return orderArr(newState,'votes')

@@ -22,7 +22,7 @@ const asObject = (anecdote) => {
 }
 
 export const initialState = {
-  anecdotes: orderArr(anecdotesAtStart.map(asObject),'votes'),
+  anecdotes: [],
   notification: {
       visible: false,
       content:''},

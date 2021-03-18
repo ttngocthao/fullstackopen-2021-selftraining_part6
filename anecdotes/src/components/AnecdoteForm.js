@@ -1,15 +1,18 @@
 import React from 'react'
 import {useDispatch } from 'react-redux'
 import {createNew} from '../reducers/anecdoteReducer'
-
+import anecdotesService from '../services/anecdotes'
 
 const AnecdoteForm = () => {
     const dispatch = useDispatch()
-    const create=(e)=>{
+    const create=async(e)=>{
     e.preventDefault()
-   
-    if(e.target.content.value){
-      dispatch(createNew(e.target.content.value))
+    const content =e.target.content.value
+    if(content){
+       
+      const newAnecdote = await anecdotesService.createNew(content)
+      dispatch(createNew(newAnecdote))
+      
     }else{
       alert('input cannot be empty')
     }
