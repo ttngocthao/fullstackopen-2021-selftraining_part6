@@ -22,8 +22,12 @@ const asObject = (anecdote) => {
 }
 
 export const initialState = {
-   anecdotes: orderArr(anecdotesAtStart.map(asObject),'votes'),
-   notification: {
-       visible: false,
-       content:''}
+  anecdotes: orderArr(anecdotesAtStart.map(asObject),'votes'),
+  notification: {
+      visible: false,
+      content:''},
+  filter:{
+      showAll: true,
+      filterInput:''
+  }
 }
