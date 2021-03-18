@@ -1,21 +1,21 @@
 import React from 'react'
-import {useDispatch } from 'react-redux'
+import {useDispatch,connect } from 'react-redux'
 import {createNew} from '../reducers/anecdoteReducer'
 import { setNotification } from '../reducers/notificationReducer'
 
-const AnecdoteForm = () => {
-    const dispatch = useDispatch()
+const AnecdoteForm = (props) => {
+   // const dispatch = useDispatch()
+   const {createNew,setNotification} = props
     const create=async(e)=>{
     e.preventDefault()
     const content =e.target.content.value
-    if(content){
-     
-      dispatch(createNew(content))
-
-      dispatch(setNotification('New anecdote is added',10))
-      
+    if(content){     
+     // dispatch(createNew(content))
+      createNew(content)
+     // dispatch(setNotification('New anecdote is added',10))
+      setNotification('New anecdote is added',10)
     }else{
-      alert('input cannot be empty')
+      setNotification('input cannot be empty',5)
     }
    
   }
@@ -30,4 +30,5 @@ const AnecdoteForm = () => {
     )
 }
 
-export default AnecdoteForm
+const mapDispatchToProps ={createNew,setNotification}
+export default connect(null,mapDispatchToProps)(AnecdoteForm)

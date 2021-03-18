@@ -1,6 +1,7 @@
 const initialState = {
       visible: false,
       content:''
+      
       }
 
 const notificationReducer =(state = initialState,action )=>{
@@ -20,8 +21,10 @@ const notificationReducer =(state = initialState,action )=>{
     }
 }
 export const setNotification =(msg,timeInSecond)=>{
-    return async dispatch =>{
-       
+   
+   
+    return async dispatch =>{     
+        
         await dispatch({
             type:'SHOW_NOTIFICATION',
             data: msg
@@ -30,7 +33,9 @@ export const setNotification =(msg,timeInSecond)=>{
            dispatch({
                type: 'HIDE_NOTIFICATION'
            })
-        },timeInSecond*1000)
+        },timeInSecond*1000) 
+
+       
     }
    
 }
